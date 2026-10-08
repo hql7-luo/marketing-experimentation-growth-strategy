@@ -1,14 +1,36 @@
 # Marketing Experimentation & Growth Strategy
 
-**Who should we target, which campaign should we choose, and how should we allocate a limited marketing budget?**
+**Do promotional emails actually make customers more likely to buy?**
 
-A business analytics case built from a real randomized retail email experiment. The outcome is a defensible management decision, supported by SQL, statistical inference and independent policy evaluation.
+I used data from a real experiment with 64,000 shoppers to find out which promotional emails actually increase purchases—and whether smarter targeting is worth the extra effort.
 
-[中文](README.zh-CN.md) · [Executive Decision Memo](reports/executive_memo.md) · [Research Notebook](notebooks/01_research.ipynb) · [Methods](docs/methodology.md) · [Source & rights](docs/data-source.md)
+**Skills demonstrated:** Business problem framing, A/B testing, SQL/Python analysis, statistical reasoning and management decision-making.
 
-## Business question → experiment → decision
+[中文](README.zh-CN.md) · [Explore the analysis](#research-findings) · [Executive decision memo](reports/executive_memo.md)
 
-A retailer can send Men's Email, Women's Email or no email. Observed purchases alone cannot tell management which sales the campaign created. Kevin Hillstrom's **2008 MineThatData challenge** supplies **64,000 customers randomly assigned to three arms**, with two-week visit, conversion and spend outcomes. This historical analysis does not describe the current market or an implemented campaign.
+**The problem:** Retailers spend money on promotional emails without always knowing whether those emails caused additional purchases.
+
+**My approach:** I compared no email, a women's apparel promotion and a men's apparel promotion, then tested ways to choose which customers should receive an email when the budget is limited.
+
+**What the data showed:** The men's apparel promotion had the highest purchase rate. There was not enough evidence that more complicated customer targeting worked better than a simpler approach using the same number of emails.
+
+**Business recommendation:** Use the men's apparel campaign as the starting benchmark, and test a more complex targeting strategy before investing in it. This helps a retailer avoid paying for complexity that has not proved its value.
+
+*Historical evidence: a 2008 randomized experiment, 64,000 customers, two weeks of follow-up. This project analyzes past results; no marketing campaign was implemented or business growth realized.*
+
+![Which email got more customers to buy? No Email 0.573%, Women's Apparel Email 0.884%, Men's Apparel Email 1.253%. These are two-week purchase rates from a historical randomized experiment.](reports/figures/00_purchase_rate_overview.png)
+
+**In everyday terms:** Compared with no email, the men's apparel promotion was estimated to add about **7 buying customers per 1,000 assigned shoppers** over two weeks. This is an average estimate from the historical experiment, with uncertainty—not a promise of future results. “Men's” and “Women's” name the apparel promotions, not the shoppers' gender. Purchase rate counts shoppers who bought; it is not sales revenue, profit or number of orders.
+
+## Explore the analysis
+
+The overview makes the business decision easy to follow. The sections below preserve the statistical evidence, budget comparisons and limits behind it.
+
+[Research findings](#research-findings) · [Methodology](#methodology) · [Technical details and charts](#technical-details-and-decision-visuals) · [Research Notebook](notebooks/01_research.ipynb) · [Full methods](docs/methodology.md) · [Source & rights](docs/data-source.md)
+
+## Research findings
+
+The purchase rates above are observed group averages. The comparisons below estimate the additional purchases and spending caused by email assignment, report uncertainty, and distinguish simple campaign effectiveness from the extra value of customer targeting.
 
 | Evidence | Finding | Decision implication |
 |---|---|---|
@@ -38,7 +60,7 @@ Blanket policies consume twice the email budget of 50% policies. Compare targeti
 
 A **$100 budget** at $0.02/email funds 5,000 emails for 10,000 eligible customers. The same capacity costs $500 at $0.10/email. The [108 fixed scenarios](reports/tables/scenario_grid.csv) vary capacity, cost, margin and minimum contribution threshold; sending fewer than capacity can be preferable. No policy was retuned on the holdout.
 
-## Analytical workflow
+## Methodology
 
 1. **Audit:** pinned publisher SHA-256, full schema/domain/missingness checks, preserved source rows. Repeated records are not confirmed duplicate customers.
 2. **SQL + descriptive analysis:** SQLite queries for customer profiles, intention-to-treat campaign rates and historical customer groups. SQL/Python aggregates reconcile numerically.
@@ -50,7 +72,7 @@ A **$100 budget** at $0.02/email funds 5,000 emails for 10,000 eligible customer
 
 ![Policy evidence](reports/figures/05_policy_comparison.png)
 
-## Decision visuals
+## Technical details and decision visuals
 
 | Question | Reproducible figure |
 |---|---|
@@ -61,7 +83,7 @@ A **$100 budget** at $0.02/email funds 5,000 emails for 10,000 eligible customer
 | Does targeting improve the budget decision? | [Held-out strategy comparison](reports/figures/05_policy_comparison.png) |
 | When should the business stop sending? | [Cost/capacity sensitivity](reports/figures/06_budget_sensitivity.png) |
 
-All figures are generated from exported aggregates; PNG and SVG versions are included. Artifact hashes in [manifest.json](reports/manifest.json) detect drift. Code and numeric tests establish calculation correctness; rendered visual QA separately checks legibility.
+All figures are generated from exported aggregates; PNG and SVG versions are included. The new purchase-rate overview is a presentation-only addition built with `python scripts/build_overview.py` from the existing verified campaign summary. It has a separate [overview manifest](reports/overview_manifest.json); the original analysis and six evidence charts are unchanged. Artifact hashes in [manifest.json](reports/manifest.json) detect drift. Code and numeric tests establish calculation correctness; rendered visual QA separately checks legibility.
 
 ## Reproduce locally
 
@@ -97,7 +119,7 @@ Execute `notebooks/01_research.ipynb` using the installed environment from the p
 
 ## Project map and portfolio fit
 
-`src/marketing_analytics/` — audited ingestion, inference, models, HT evaluation, pipeline, figures · `sql/` — visible SQLite queries · `tests/` — hand calculations, exhaustive randomization unbiasedness, split/leakage/capacity invariants · `notebooks/` — executed research · `reports/` — aggregate evidence, six figures, memo · `docs/` — frozen plan, methods, source rights, portfolio distinction.
+`src/marketing_analytics/` — audited ingestion, inference, models, HT evaluation, pipeline, figures · `sql/` — visible SQLite queries · `tests/` — hand calculations, exhaustive randomization unbiasedness, split/leakage/capacity invariants · `notebooks/` — executed research · `reports/` — aggregate evidence, purchase-rate overview, six detailed figures, memo · `docs/` — frozen plan, methods, source rights, portfolio distinction.
 
 This project complements existing supply-chain planning, B2B sales workflow, enterprise RAG and customer due diligence with **marketing experimentation, statistical inference, customer strategy and constrained resource allocation**. [Existing-project audit](docs/project-positioning.md).
 
