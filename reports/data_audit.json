@@ -1,0 +1,127 @@
+{
+  "source_sha256": "0e5893329d8b93cefecc571777672028290ab69865718020c78c7284f291aece",
+  "field_profile": {
+    "recency": {
+      "dtype": "int64",
+      "unique_values": 12,
+      "missing": 0,
+      "minimum": 1.0,
+      "maximum": 12.0
+    },
+    "history_segment": {
+      "dtype": "str",
+      "unique_values": 7,
+      "missing": 0,
+      "categories": [
+        "1) $0 - $100",
+        "2) $100 - $200",
+        "3) $200 - $350",
+        "4) $350 - $500",
+        "5) $500 - $750",
+        "6) $750 - $1,000",
+        "7) $1,000 +"
+      ]
+    },
+    "history": {
+      "dtype": "float64",
+      "unique_values": 34833,
+      "missing": 0,
+      "minimum": 29.99,
+      "maximum": 3345.93
+    },
+    "mens": {
+      "dtype": "int64",
+      "unique_values": 2,
+      "missing": 0,
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "womens": {
+      "dtype": "int64",
+      "unique_values": 2,
+      "missing": 0,
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "zip_code": {
+      "dtype": "str",
+      "unique_values": 3,
+      "missing": 0,
+      "categories": [
+        "Rural",
+        "Surburban",
+        "Urban"
+      ]
+    },
+    "newbie": {
+      "dtype": "int64",
+      "unique_values": 2,
+      "missing": 0,
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "channel": {
+      "dtype": "str",
+      "unique_values": 3,
+      "missing": 0,
+      "categories": [
+        "Multichannel",
+        "Phone",
+        "Web"
+      ]
+    },
+    "segment": {
+      "dtype": "str",
+      "unique_values": 3,
+      "missing": 0,
+      "categories": [
+        "Mens E-Mail",
+        "No E-Mail",
+        "Womens E-Mail"
+      ]
+    },
+    "visit": {
+      "dtype": "int64",
+      "unique_values": 2,
+      "missing": 0,
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "conversion": {
+      "dtype": "int64",
+      "unique_values": 2,
+      "missing": 0,
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "spend": {
+      "dtype": "float64",
+      "unique_values": 429,
+      "missing": 0,
+      "minimum": 0.0,
+      "maximum": 499.0
+    }
+  },
+  "records": 64000,
+  "columns": 12,
+  "missing_cells": 0,
+  "identical_full_records_beyond_first": 6562,
+  "rows_removed": 0,
+  "arm_counts": {
+    "Women's Email": 21387,
+    "Men's Email": 21307,
+    "No Email": 21306
+  },
+  "spend_positive_rows": 578,
+  "max_spend": 499.0,
+  "spend_quantiles": {
+    "0.5": 0.0,
+    "0.95": 0.0,
+    "0.99": 0.0,
+    "0.999": 243.6604899999983
+  },
+  "category_correction": {
+    "Surburban": "Suburban"
+  },
+  "identifier_available": false
+}

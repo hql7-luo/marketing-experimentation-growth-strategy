@@ -1,0 +1,25 @@
+name: Reproducibility and tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: python -m pip install -r requirements.lock.txt
+      - run: python -m pip install --no-deps -e .
+      - run: ruff check .
+      - run: pytest -q
+      - run: python scripts/check_publication.py
+      # CI uses checked-in aggregate evidence and unit fixtures. No implicit raw-data redistribution.
+      # Full source-dependent reproduction is a local, explicit download step in README.

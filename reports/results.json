@@ -1,0 +1,299 @@
+{
+  "audit": {
+    "source_sha256": "0e5893329d8b93cefecc571777672028290ab69865718020c78c7284f291aece",
+    "field_profile": {
+      "recency": {
+        "dtype": "int64",
+        "unique_values": 12,
+        "missing": 0,
+        "minimum": 1.0,
+        "maximum": 12.0
+      },
+      "history_segment": {
+        "dtype": "str",
+        "unique_values": 7,
+        "missing": 0,
+        "categories": [
+          "1) $0 - $100",
+          "2) $100 - $200",
+          "3) $200 - $350",
+          "4) $350 - $500",
+          "5) $500 - $750",
+          "6) $750 - $1,000",
+          "7) $1,000 +"
+        ]
+      },
+      "history": {
+        "dtype": "float64",
+        "unique_values": 34833,
+        "missing": 0,
+        "minimum": 29.99,
+        "maximum": 3345.93
+      },
+      "mens": {
+        "dtype": "int64",
+        "unique_values": 2,
+        "missing": 0,
+        "minimum": 0.0,
+        "maximum": 1.0
+      },
+      "womens": {
+        "dtype": "int64",
+        "unique_values": 2,
+        "missing": 0,
+        "minimum": 0.0,
+        "maximum": 1.0
+      },
+      "zip_code": {
+        "dtype": "str",
+        "unique_values": 3,
+        "missing": 0,
+        "categories": [
+          "Rural",
+          "Surburban",
+          "Urban"
+        ]
+      },
+      "newbie": {
+        "dtype": "int64",
+        "unique_values": 2,
+        "missing": 0,
+        "minimum": 0.0,
+        "maximum": 1.0
+      },
+      "channel": {
+        "dtype": "str",
+        "unique_values": 3,
+        "missing": 0,
+        "categories": [
+          "Multichannel",
+          "Phone",
+          "Web"
+        ]
+      },
+      "segment": {
+        "dtype": "str",
+        "unique_values": 3,
+        "missing": 0,
+        "categories": [
+          "Mens E-Mail",
+          "No E-Mail",
+          "Womens E-Mail"
+        ]
+      },
+      "visit": {
+        "dtype": "int64",
+        "unique_values": 2,
+        "missing": 0,
+        "minimum": 0.0,
+        "maximum": 1.0
+      },
+      "conversion": {
+        "dtype": "int64",
+        "unique_values": 2,
+        "missing": 0,
+        "minimum": 0.0,
+        "maximum": 1.0
+      },
+      "spend": {
+        "dtype": "float64",
+        "unique_values": 429,
+        "missing": 0,
+        "minimum": 0.0,
+        "maximum": 499.0
+      }
+    },
+    "records": 64000,
+    "columns": 12,
+    "missing_cells": 0,
+    "identical_full_records_beyond_first": 6562,
+    "rows_removed": 0,
+    "arm_counts": {
+      "Women's Email": 21387,
+      "Men's Email": 21307,
+      "No Email": 21306
+    },
+    "spend_positive_rows": 578,
+    "max_spend": 499.0,
+    "spend_quantiles": {
+      "0.5": 0.0,
+      "0.95": 0.0,
+      "0.99": 0.0,
+      "0.999": 243.6604899999983
+    },
+    "category_correction": {
+      "Surburban": "Suburban"
+    },
+    "identifier_available": false
+  },
+  "split": {
+    "seed": 20080320,
+    "train_n": 32000,
+    "test_n": 32000,
+    "train_index_sha256": "356aead64ec7bce8de8648d638da124caed29044ea2a13adf9a6734486ef8eed",
+    "test_index_sha256": "fb4b441731d823f36c21139b7ebc9cf3419f80d9308b5116eb6d79ebccdeeed7",
+    "train_arm_counts": {
+      "2": 10693,
+      "1": 10654,
+      "0": 10653
+    },
+    "test_arm_counts": {
+      "2": 10694,
+      "0": 10653,
+      "1": 10653
+    },
+    "policy_prior_weight": 1000,
+    "observed_segments": 6,
+    "known_assignment_probabilities": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ]
+  },
+  "model": {
+    "control_test_n": 10653,
+    "auroc": 0.6537198279193179,
+    "brier": 0.006149477082317461,
+    "log_loss": 0.03694055528968981,
+    "train_control_rate": 0.005256735191964705,
+    "constant_brier": 0.0061579356167662325
+  },
+  "max_absolute_smd": 0.016899120365944938,
+  "heterogeneity": [
+    {
+      "outcome": "conversion",
+      "method": "OLS additive interaction joint Wald, HC3 covariance",
+      "statistic": 18.49457194083722,
+      "df": 10,
+      "p_value": 0.047172353579550796
+    },
+    {
+      "outcome": "spend",
+      "method": "OLS additive interaction joint Wald, HC3 covariance",
+      "statistic": 12.96145140521914,
+      "df": 10,
+      "p_value": 0.2258351071081413
+    }
+  ],
+  "policies": [
+    {
+      "incremental_spend": 0.0,
+      "spend_se": 0.0,
+      "spend_ci_low": 0.0,
+      "spend_ci_high": 0.0,
+      "incremental_conversion": 0.0,
+      "conversion_se": 0.0,
+      "conversion_ci_low": 0.0,
+      "conversion_ci_high": 0.0,
+      "email_fraction": 0.0,
+      "policy": "No Email",
+      "men_fraction": 0.0,
+      "women_fraction": 0.0,
+      "assumed_contribution_per_10000": 0.0,
+      "contribution_ci_low_per_10000": 0.0,
+      "contribution_ci_high_per_10000": 0.0
+    },
+    {
+      "incremental_spend": 0.818139375,
+      "spend_se": 0.20460908557423013,
+      "spend_ci_low": 0.41711293636483504,
+      "spend_ci_high": 1.2191658136351649,
+      "incremental_conversion": 0.00609375,
+      "conversion_se": 0.001315423488722978,
+      "conversion_ci_low": 0.0035155673376849337,
+      "conversion_ci_high": 0.008671932662315068,
+      "email_fraction": 1.0,
+      "policy": "Blanket Men",
+      "men_fraction": 1.0,
+      "women_fraction": 0.0,
+      "assumed_contribution_per_10000": 3072.5575,
+      "contribution_ci_low_per_10000": 1468.4517454593404,
+      "contribution_ci_high_per_10000": 4676.663254540659
+    },
+    {
+      "incremental_spend": 0.42146624999999993,
+      "spend_se": 0.180497548065061,
+      "spend_ci_low": 0.06769755649469306,
+      "spend_ci_high": 0.7752349435053068,
+      "incremental_conversion": 0.00215625,
+      "conversion_se": 0.00116713408061022,
+      "conversion_ci_low": -0.00013129076312529912,
+      "conversion_ci_high": 0.0044437907631252995,
+      "email_fraction": 1.0,
+      "policy": "Blanket Women",
+      "men_fraction": 0.0,
+      "women_fraction": 1.0,
+      "assumed_contribution_per_10000": 1485.8649999999998,
+      "contribution_ci_low_per_10000": 70.79022597877224,
+      "contribution_ci_high_per_10000": 2900.939774021227
+    },
+    {
+      "incremental_spend": 0.43441875,
+      "spend_se": 0.13803899000400321,
+      "spend_ci_low": 0.1638673011298692,
+      "spend_ci_high": 0.7049701988701309,
+      "incremental_conversion": 0.0024375,
+      "conversion_se": 0.0009279921161289169,
+      "conversion_ci_low": 0.0006186688744502114,
+      "conversion_ci_high": 0.004256331125549789,
+      "email_fraction": 0.5,
+      "policy": "Random Men (50%)",
+      "men_fraction": 0.5,
+      "women_fraction": 0.0,
+      "assumed_contribution_per_10000": 1637.6750000000002,
+      "contribution_ci_low_per_10000": 555.4692045194768,
+      "contribution_ci_high_per_10000": 2719.880795480524
+    },
+    {
+      "incremental_spend": 0.2850075,
+      "spend_se": 0.12870346032029795,
+      "spend_ci_low": 0.0327533530865361,
+      "spend_ci_high": 0.5372616469134639,
+      "incremental_conversion": 0.00103125,
+      "conversion_se": 0.0008540970379073529,
+      "conversion_ci_low": -0.0006427494336007529,
+      "conversion_ci_high": 0.0027052494336007532,
+      "email_fraction": 0.5,
+      "policy": "Random Women (50%)",
+      "men_fraction": 0.0,
+      "women_fraction": 0.5,
+      "assumed_contribution_per_10000": 1040.0300000000002,
+      "contribution_ci_low_per_10000": 31.013412346144396,
+      "contribution_ci_high_per_10000": 2049.0465876538556
+    },
+    {
+      "incremental_spend": 0.39196031249999996,
+      "spend_se": 0.15837120853418366,
+      "spend_ci_low": 0.08155844758491754,
+      "spend_ci_high": 0.7023621774150823,
+      "incremental_conversion": 0.00309375,
+      "conversion_se": 0.001056383788237695,
+      "conversion_ci_low": 0.0010232758212021307,
+      "conversion_ci_high": 0.005164224178797869,
+      "email_fraction": 0.5,
+      "policy": "Purchase propensity Men (50%)",
+      "men_fraction": 0.5,
+      "women_fraction": 0.0,
+      "assumed_contribution_per_10000": 1467.84125,
+      "contribution_ci_low_per_10000": 226.23379033967015,
+      "contribution_ci_high_per_10000": 2709.4487096603293
+    },
+    {
+      "incremental_spend": 0.48964125000000003,
+      "spend_se": 0.14878648299267747,
+      "spend_ci_low": 0.1980251019479709,
+      "spend_ci_high": 0.7812573980520292,
+      "incremental_conversion": 0.00346875,
+      "conversion_se": 0.0010395732069864384,
+      "conversion_ci_low": 0.0014312239550137778,
+      "conversion_ci_high": 0.005506276044986222,
+      "email_fraction": 0.5,
+      "policy": "Segment incremental (50%)",
+      "men_fraction": 0.42665625,
+      "women_fraction": 0.07334375,
+      "assumed_contribution_per_10000": 1858.565,
+      "contribution_ci_low_per_10000": 692.1004077918836,
+      "contribution_ci_high_per_10000": 3025.0295922081173
+    }
+  ]
+}

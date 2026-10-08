@@ -1,0 +1,13 @@
+data/raw/*
+!data/raw/.gitkeep
+data/processed/
+*.sqlite
+*.db
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store
+*.egg-info/

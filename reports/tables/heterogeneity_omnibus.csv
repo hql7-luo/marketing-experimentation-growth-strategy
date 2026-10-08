@@ -1,0 +1,3 @@
+outcome,method,statistic,df,p_value
+conversion,"OLS additive interaction joint Wald, HC3 covariance",18.49457194083722,10,0.047172353579550796
+spend,"OLS additive interaction joint Wald, HC3 covariance",12.96145140521914,10,0.2258351071081413
